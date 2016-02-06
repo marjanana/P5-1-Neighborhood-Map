@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title></title>
-</head>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="searchbar"></div>
 
-<body>
-  <div><p>Find: <input data-bind="value: searchName" /></p>
-  </div>
 
-<script type="text/javascript" src="js/app.js"></script>
-</body>
 
+    <script type="text/javascript" src="js/map.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmkRJgL99vrPsypcFhBzeg3l1paHlHxTg&callback=initMap">
+    </script>
+  </body>
 </html>

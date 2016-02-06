@@ -1,0 +1,22 @@
+{
+  "name": "P5",
+  "description": "Udacity Project",
+  "main": "P5-1 Neighborhood Map",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "authors": [
+    "Ana"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

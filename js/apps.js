@@ -138,6 +138,7 @@ var ViewModel = function() {
     var view = new View();
     self.locationList = ko.observableArray([]);
 
+
     // Initialize locations on the map
     self.initialize = function() {
         self.renderLocations(locations);
@@ -240,24 +241,18 @@ var ViewModel = function() {
         });
     }
 
+this.search = ko.observable("");
 
+   self.searchGyms = function() {
+        var search = this.locationList().toLowerCase();
+            if (!search) {
+                return null;
+            } else {
+                return ko.utils.arrayFirst(this.locationList(), function(item) {
+                    return ko.utils.stringStartsWith(item.name().toLowerCase(), search);
+                });
+            }
 
-    self.individualGyms = ko.observable();
-     self.searchGyms = function() {
-         var chosenGyms = ko.observableArray([]);
-
-            var individualGyms = self.individualGyms;
-            var x = searchGyms.length;
-            for (var i = 0; i < x; i++) {
-
-                if (locations[i].name.indexOf(individualGyms[i]) != -1) {
-                    chosenGyms.push(locations[i]);
-                }
-
-
-            // Push the location into the list
-            self.locationList.push(find[i]);
-        }
     };
 
 };

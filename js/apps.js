@@ -241,19 +241,19 @@ var ViewModel = function() {
         });
     }
 
-this.search = ko.observable("");
+self.search = ko.observable("");
 
-   self.searchGyms = function() {
-        var search = this.locationList().toLowerCase();
-            if (!search) {
-                return null;
+   self.searchGyms = ko.computed(function() {
+
+            if (!self.search()) {
+                return self.locationList();
             } else {
-                return ko.utils.arrayFirst(this.locationList(), function(item) {
-                    return ko.utils.stringStartsWith(item.name().toLowerCase(), search);
+                return ko.utils.arrayFilter(self.locationList(), function(item) {
+                    return item.name.toLowerCase().indexOf(self.search()) > -1;
                 });
             }
 
-    };
+    });
 
 };
 

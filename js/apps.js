@@ -4,39 +4,30 @@ var locations = [{
     latIngA: 40.7133206,
     latIngB: -74.0087901,
     address: '25 Park Pl, New York, NY 10007',
-
 }, {
     id: '1',
     name: 'Mendez Boxing',
     latIngA: 40.7430182,
     latIngB: -73.9868756,
     address: '23 E 26th St, New York, NY 10010',
-
 }, {
     id: '2',
     name: 'Shadowbox NYC',
     latIngA: 40.7402416,
     latIngB: -73.9928662,
     address: '28 W 20th St, New York, NY 10011',
-
-
 }, {
     id: '3',
     name: 'Overthrow Boxing NYC',
     latIngA: 40.7255372,
     latIngB: -73.9928377,
     address: '1 W 28th St, New York, NY 10010',
-
 }, {
     id: '4',
     name: 'Morris Park Boxing Club',
     latIngA: 40.8445665,
     latIngB: -73.8679362,
     address: '1 W 28th St, New York, NY 10010',
-
-
-
-
 }];
 
 // Google Map
@@ -47,7 +38,6 @@ var View = function() {
     var mapOptions = {
         zoom: 11,
         center: myLatlng,
-
     };
 
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -60,8 +50,6 @@ var View = function() {
 
     // Markers
     var markers = {};
-
-    // Render locations on the view: map and list
     self.renderLocation = function(location) {
         var currentLocation = location;
         var id = currentLocation.id;
@@ -127,7 +115,6 @@ var View = function() {
             '</div>';
         return markerContent;
     }
-
 };
 
 //*****************View Model*************************
@@ -157,10 +144,9 @@ var ViewModel = function() {
             // Push the location into the list
             self.locationList.push(activeLocations[i]);
         }
-
     };
 
-    // A function to piece together today's date. Used in getFourSquareData.
+
     function getToday() {
         var today = new Date();
         var dd = today.getDate();
@@ -206,8 +192,6 @@ var ViewModel = function() {
                 $('#fs-link').attr('href', '#');
             }
         }).fail(function() {
-            // If the request fails, the link is set to the current page,
-            // and show a console.log info for the failed request.
             $('#fs-link').attr('href', '#');
             view.showAlert('Foursquare API is not available at the moment.');
         });
@@ -215,7 +199,6 @@ var ViewModel = function() {
 
     //Foursquare Photo
     function getFoursquarePhotos(location, venueId) {
-        // Get venue's photo URL from Foursquare by venue Id.
         var photoRequestUrl = 'https://api.foursquare.com/v2/venues/' + venueId + '/photos' +
             '?limit=1&' + foursquareKeyString +
             '&v=' + getToday();
@@ -231,11 +214,10 @@ var ViewModel = function() {
                 $('#fs-photo').attr('src', photoUrl);
                 view.resetInfoWindow(location);
             } else {
-                // If there is no photo available from Foursquare, set the image to empty.
+                // Don't display image it it is not available from Foursquare.
                 $('#fs-photo').attr('src', '');
             }
         }).fail(function() {
-            // If the request failed, set the image to empty, and show a console.log info for the failed request.
             $('#fs-photo').attr('src', '');
             view.showAlert('Foursquare API is not available at the moment.');
         });

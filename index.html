@@ -8,19 +8,14 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
    </head>
    <body>
-      <div class="col-md-2" >
-      </div>
-
-      <div class="col-md-2">izaberi se bre
-         <form>
-         <input data-bind="value: search, valueUpdate: 'afterkeydown'" />
+      <div class="col-md-2">
+         <form class="form">
+         <input data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Find a Gym"/>
          <ul data-bind="foreach: searchGyms" class="list">
             <li data-bind="click: $parent.onLocationClick"><span data-bind="text:name"></span></li>
          </ul>
          </form>
       </div>
-
-
       </div>
       <div id="alert-box" class="msgbox alert alert-warning">Error</div>
       <div id="map-canvas" data-bind="map: myMap"></div>

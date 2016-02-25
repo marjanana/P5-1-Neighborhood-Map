@@ -12,9 +12,9 @@ Udacity P5 Project
 Navigate to index.html and open it in your browser.
 
 
-### references ###
+### REFERENCES ###
 
-*www.knockout.js
-*Google Map API
-*Foursqure API
+* www.knockout.js
+* Google Map API
+* Foursqure API
 

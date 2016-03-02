@@ -43,7 +43,7 @@ var View = function() {
     });
 
     // Markers
-    var markers = {};
+    self.markers = {};
     self.renderLocation = function(location) {
         var currentLocation = location;
         var id = currentLocation.id;
@@ -55,39 +55,49 @@ var View = function() {
         var marker = new google.maps.Marker({
             position: markerLatLng,
             map: map,
+            animation: google.maps.Animation.DROP,
             title: name
         });
 
         // Add event listener to marker
         google.maps.event.addListener(marker, 'click', (function(location) {
+
             return function() {
+
                 viewModel.onLocationClick(location);
+
             };
         })(location));
 
-        markers[id] = marker;
+        self.markers[id] = marker;
     };
 
     // Info Windows
     self.showInfoWindow = function(location) {
         $('.collapse').collapse('hide');
-        var marker = markers[location.id];
+        var marker = self.markers[location.id];
         infowindow.setContent(getMarkerContent(location));
         infowindow.open(map, marker);
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function(){ marker.setAnimation(null); }, 1550);
+        }
 
     };
 
     self.resetInfoWindow = function(location) {
-        var marker = markers[location.id];
+        var marker = self.markers[location.id];
         infowindow.open(map, marker);
     };
 
     // Clear the markers
     self.clearMarkers = function() {
-        for (var id in markers) {
-            markers[id].setVisible(false);
+        for (var id = 0; id < self.markers.length; id++) {
+            self.markers[id].setVisible(false);
         }
-        markers = {};
+        self.markers = {};
     };
 
     self.showAlert = function(alert) {
@@ -112,12 +122,12 @@ var View = function() {
 
     // Google Map
 
-    var myLatlng = new google.maps.LatLng(40.8227927, -74.0087911);
+    var myLatlng = new google.maps.LatLng(40.7830603, -73.9712488);
     var mapOptions = {
         zoom: 11,
         center: myLatlng,
     };
-var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 };
 
@@ -227,17 +237,23 @@ var ViewModel = function() {
         });
     }
 
-self.search = ko.observable("");
+    self.search = ko.observable("");
 
-   self.searchGyms = ko.computed(function() {
+    self.searchGyms = ko.computed(function(item) {
 
-            if (!self.search()) {
-                return self.locationList();
-            } else {
-                return ko.utils.arrayFilter(self.locationList(), function(item) {
-                    return item.name.toLowerCase().indexOf(self.search()) > -1;
-                });
-            }
+        if (!self.search()) {
+            return self.locationList();
+        } else {
+            return ko.utils.arrayFilter(self.locationList(), function(item) {
+                if (item.name.toLowerCase().indexOf(self.search()) > -1) {
+                    return true;
+                }
+                return false;
+
+                return view.markers[item.id].setVisible(true);
+
+            });
+        }
 
     });
 

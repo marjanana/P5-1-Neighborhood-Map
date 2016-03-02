@@ -8,23 +8,42 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
    </head>
    <body>
+
+
       <div class="col-md-2">
-         <form class="form">
-         <input data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Find a Gym"/>
-         <ul data-bind="foreach: searchGyms" class="list">
-            <li data-bind="click: $parent.onLocationClick"><span data-bind="text:name"></span></li>
-         </ul>
-         </form>
+         <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            GYMS IN YOUR AREA
+         </a>
+         <div class="collapse.in" id="collapseExample">
+            <div class="well">
+               <ul data-bind="foreach: searchGyms" class="list">
+                  <li data-bind="click: $parent.onLocationClick"><span data-bind="text:name"></span></li>
+               </ul>
+            </div>
+         </div>
+          <form class="form">
+      <input data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Search" class="search"/>
+      </form>
+
       </div>
-      </div>
+
+
+       <div id="map-canvas" data-bind="map: myMap"></div>
       <div id="alert-box" class="msgbox alert alert-warning">Error</div>
-      <div id="map-canvas" data-bind="map: myMap"></div>
+
+
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmkRJgL99vrPsypcFhBzeg3l1paHlHxTg&callback=initMap" async defer></script>
       <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-      <script type="text/javascript" src="js/knockout-3.3.0.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+      <script src="js/knockout-3.3.0.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script src="js/apps.js"></script>
+      <script src="js/jquery.collapsible.js"></script>
+
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="css/style.css">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/apps.js"></script>
+
+
    </body>
 </html>

@@ -30,17 +30,11 @@ var locations = [{
     address: '1 W 28th St, New York, NY 10010',
 }];
 
-// Google Map
-var View = function() {
-      "use strict";
-    var self = this;
-    var myLatlng = new google.maps.LatLng(40.8227927, -74.0087911);
-    var mapOptions = {
-        zoom: 11,
-        center: myLatlng,
-    };
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+var View = function() {
+    "use strict";
+    var self = this;
+
 
     // Create infowindow
     var infowindow = new google.maps.InfoWindow({
@@ -91,7 +85,7 @@ var View = function() {
     // Clear the markers
     self.clearMarkers = function() {
         for (var id in markers) {
-            markers[id].setMap(null);
+            markers[id].setVisible(false);
         }
         markers = {};
     };
@@ -115,6 +109,16 @@ var View = function() {
             '</div>';
         return markerContent;
     }
+
+    // Google Map
+
+    var myLatlng = new google.maps.LatLng(40.8227927, -74.0087911);
+    var mapOptions = {
+        zoom: 11,
+        center: myLatlng,
+    };
+var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
 };
 
 //*****************View Model*************************

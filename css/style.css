@@ -4,9 +4,20 @@ font-family:"Open Sans", sans-serif;
 }
 
 
-.form {
-  margin: 3% 2% 1% 2%;
+.search {
+
+background-color: orange;
+border: 1px solid gray;
+padding: 6px 6px;
+font-weight: bold;
+border-radius: 5px;
+max-width: 100%;
+width: 100%;
+ color: black;
+ text-align: center;
+
 }
+
 
 .list {
 list-style-type:none;
@@ -42,5 +53,9 @@ body,#map-canvas {
 height:100%;
 }
 
-
-
+.btn  {
+  background-color: rgb(153, 190, 253) !important;
+  border: transparent !important;
+  color: black !important;
+  width: 100% !important;
+}

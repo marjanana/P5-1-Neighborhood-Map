@@ -21,13 +21,13 @@ var locations = [{
     name: 'Overthrow Boxing NYC',
     latIngA: 40.7255372,
     latIngB: -73.9928377,
-    address: '1 W 28th St, New York, NY 10010',
+    address: '9 Bleecker St, New York, NY 10012',
 }, {
     id: '4',
     name: 'Morris Park Boxing Club',
     latIngA: 40.8445665,
     latIngB: -73.8679362,
-    address: '1 W 28th St, New York, NY 10010',
+    address: '644 Morris Park Ave, Bronx, NY 10460',
 }];
 
 
@@ -35,12 +35,14 @@ var View = function() {
     "use strict";
     var self = this;
 
+    // Google Map
 
-    // Create infowindow
-    var infowindow = new google.maps.InfoWindow({
-        maxWidth: 320,
-        zIndex: 200
-    });
+    var myLatlng = new google.maps.LatLng(40.7830603, -73.9712488);
+    var mapOptions = {
+        zoom: 11,
+        center: myLatlng,
+    };
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     // Markers
     self.markers = {};
@@ -61,38 +63,15 @@ var View = function() {
 
         // Add event listener to marker
         google.maps.event.addListener(marker, 'click', (function(location) {
-
             return function() {
-
                 viewModel.onLocationClick(location);
-
             };
         })(location));
 
         self.markers[id] = marker;
     };
 
-    // Info Windows
-    self.showInfoWindow = function(location) {
-        $('.collapse').collapse('hide');
-        var marker = self.markers[location.id];
-        infowindow.setContent(getMarkerContent(location));
-        infowindow.open(map, marker);
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function(){ marker.setAnimation(null); }, 1550);
-        }
-
-    };
-
-    self.resetInfoWindow = function(location) {
-        var marker = self.markers[location.id];
-        infowindow.open(map, marker);
-    };
-
-    // Clear the markers
+     // Clear the markers
     self.clearMarkers = function() {
         for (var id = 0; id < self.markers.length; id++) {
             self.markers[id].setVisible(false);
@@ -120,14 +99,38 @@ var View = function() {
         return markerContent;
     }
 
-    // Google Map
 
-    var myLatlng = new google.maps.LatLng(40.7830603, -73.9712488);
-    var mapOptions = {
-        zoom: 11,
-        center: myLatlng,
+    // Info Windows
+        var infowindow = new google.maps.InfoWindow({
+        maxWidth: 300,
+        zIndex: 200
+        });
+
+    self.showInfoWindow = function(location) {
+        $('.collapse').collapse('hide');
+        var marker = self.markers[location.id];
+        infowindow.setContent(getMarkerContent(location));
+        infowindow.open(map, marker);
+
+        //marker bouncing on click
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function(){ marker.setAnimation(null); }, 2000);
+        }
+        //zom in google map to location that was clicked
+        window.setTimeout(function() {
+            map.panTo(marker.getPosition());
+            }, 1000);
+            map.setZoom(17);
+            map.setCenter(marker.getPosition());
     };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+    self.resetInfoWindow = function(location) {
+        var marker = self.markers[location.id];
+        infowindow.open(map, marker);
+    };
 
 };
 
@@ -223,7 +226,7 @@ var ViewModel = function() {
             if (data.response.photos.count == 1) {
                 var photoUrl =
                     data.response.photos.items[0].prefix +
-                    "width200" +
+                    "width150" +
                     data.response.photos.items[0].suffix;
                 $('#fs-photo').attr('src', photoUrl);
                 view.resetInfoWindow(location);
@@ -251,7 +254,6 @@ var ViewModel = function() {
                 return false;
 
                 return view.markers[item.id].setVisible(true);
-
             });
         }
 

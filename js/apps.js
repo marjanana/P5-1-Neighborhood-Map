@@ -36,7 +36,6 @@ var View = function() {
     var self = this;
 
     // Google Map
-
     var myLatlng = new google.maps.LatLng(40.7830603, -73.9712488);
     var mapOptions = {
         zoom: 11,
@@ -71,7 +70,7 @@ var View = function() {
         self.markers[id] = marker;
     };
 
-     // Clear the markers
+    // Clear the markers
     self.clearMarkers = function() {
         for (var id = 0; id < self.markers.length; id++) {
             self.markers[id].setVisible(false);
@@ -99,12 +98,11 @@ var View = function() {
         return markerContent;
     }
 
-
     // Info Windows
-        var infowindow = new google.maps.InfoWindow({
+    var infowindow = new google.maps.InfoWindow({
         maxWidth: 300,
         zIndex: 200
-        });
+    });
 
     self.showInfoWindow = function(location) {
         $('.collapse').collapse('hide');
@@ -117,14 +115,16 @@ var View = function() {
             marker.setAnimation(null);
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function(){ marker.setAnimation(null); }, 2000);
+            setTimeout(function() {
+                marker.setAnimation(null);
+            }, 2000);
         }
         //zom in google map to location that was clicked
         window.setTimeout(function() {
             map.panTo(marker.getPosition());
-            }, 1000);
-            map.setZoom(17);
-            map.setCenter(marker.getPosition());
+        }, 1000);
+        map.setZoom(17);
+        map.setCenter(marker.getPosition());
     };
 
     self.resetInfoWindow = function(location) {
@@ -163,7 +163,6 @@ var ViewModel = function() {
         }
     };
 
-
     function getToday() {
         var today = new Date();
         var dd = today.getDate();
@@ -173,14 +172,12 @@ var ViewModel = function() {
         if (dd < 10) {
             dd = '0' + dd;
         }
-
         if (mm < 10) {
             mm = '0' + mm;
         }
         today = yyyy + mm + dd;
         return today;
     }
-
 
     // Foursqaure data
     self.onLocationClick = function(location) {
@@ -260,8 +257,6 @@ var ViewModel = function() {
     });
 
 };
-
-
 
 var viewModel = new ViewModel();
 viewModel.initialize();

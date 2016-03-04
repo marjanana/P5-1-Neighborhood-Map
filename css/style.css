@@ -1,61 +1,50 @@
 * {
-
-font-family:"Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
-
-
 .search {
-
-background-color: orange;
-border: 1px solid gray;
-padding: 6px 6px;
-font-weight: bold;
-border-radius: 5px;
-max-width: 100%;
-width: 100%;
- color: black;
- text-align: center;
-
+    background-color: orange;
+    border: 1px solid gray;
+    padding: 6px 6px;
+    font-weight: bold;
+    border-radius: 5px;
+    max-width: 100%;
+    width: 100%;
+    color: black;
+    text-align: center;
 }
-
-
 .list {
-list-style-type:none;
-text-align: center;
-background-color: rgb(153, 190, 253);
-border: 1px solid gray;
-padding: 15px 10px;
-font-weight: bold;
-line-height: 195%;
-margin-top: 2%;
+    list-style-type: none;
+    text-align: center;
+    background-color: rgb(153, 190, 253);
+    border: 1px solid gray;
+    padding: 15px 10px;
+    font-weight: bold;
+    line-height: 195%;
+    margin-top: 2%;
 }
-
 .list li {
-font-size:12pt;
-cursor:pointer;
-padding:5px 0;
+    font-size: 12pt;
+    cursor: pointer;
+    padding: 5px 0;
 }
-
 .list li:hover {
-background:rgb(245,153,24);
-color:#fff;
+    background: rgb(245, 153, 24);
+    color: #fff;
 }
-
 .msgbox {
-display:none;
-z-index:400;
-position:fixed;
-bottom:40px;
-left:5%;
+    display: none;
+    z-index: 400;
+    position: fixed;
+    bottom: 40px;
+    left: 5%;
 }
-
-body,#map-canvas {
-height:100%;
+body,
+#map-canvas {
+    height: 100%;
 }
-
-.btn  {
-  background-color: rgb(153, 190, 253) !important;
-  border: transparent !important;
-  color: black !important;
-  width: 100% !important;
+.btn {
+    border: transparent !important;
+    color: black !important;
+    width: 100% !important;
+    padding: 20px 6px;
 }

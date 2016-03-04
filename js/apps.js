@@ -36,6 +36,7 @@ var View = function() {
     var self = this;
 
     // Google Map
+
     var myLatlng = new google.maps.LatLng(40.7830603, -73.9712488);
     var mapOptions = {
         zoom: 11,
@@ -97,6 +98,8 @@ var View = function() {
             '</div>';
         return markerContent;
     }
+
+
 
     // Info Windows
     var infowindow = new google.maps.InfoWindow({
@@ -163,6 +166,7 @@ var ViewModel = function() {
         }
     };
 
+
     function getToday() {
         var today = new Date();
         var dd = today.getDate();
@@ -172,12 +176,14 @@ var ViewModel = function() {
         if (dd < 10) {
             dd = '0' + dd;
         }
+
         if (mm < 10) {
             mm = '0' + mm;
         }
         today = yyyy + mm + dd;
         return today;
     }
+
 
     // Foursqaure data
     self.onLocationClick = function(location) {
@@ -257,6 +263,8 @@ var ViewModel = function() {
     });
 
 };
+
+
 
 var viewModel = new ViewModel();
 viewModel.initialize();

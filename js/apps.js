@@ -30,13 +30,15 @@ var locations = [{
     address: '644 Morris Park Ave, Bronx, NY 10460',
 }];
 
+var initApp = function() {
+  ko.applyBindings(new myLatlng());
+};
 
 var View = function() {
     "use strict";
     var self = this;
 
     // Google Map
-
     var myLatlng = new google.maps.LatLng(40.7830603, -73.9712488);
     var mapOptions = {
         zoom: 11,
@@ -98,7 +100,6 @@ var View = function() {
             '</div>';
         return markerContent;
     }
-
 
 
     // Info Windows

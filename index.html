@@ -1,9 +1,10 @@
 <!DOCTYPE HTML5>
+<html lang="en">
 <html>
    <head>
-      <title>Boxing Gyms in NYC</title>
-      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="utf-8">
+      <title>Boxing Gyms in NYC</title>
    </head>
    <body>
       <div class="col-md-2">
@@ -24,7 +25,7 @@
       <div id="map-canvas"></div>
       <div id="alert-box" class="msgbox alert alert-warning">Error</div>
 
-      <script  async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmkRJgL99vrPsypcFhBzeg3l1paHlHxTg" onerror="googleError()"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmkRJgL99vrPsypcFhBzeg3l1paHlHxTg&amp;callback=initApp" async></script>
       <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
       <script src="js/jquery.collapsible.js"></script>
       <script src="js/knockout-3.3.0.js"></script>
@@ -35,10 +36,6 @@
       <link rel="stylesheet" href="css/bootstrap-theme.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
       <link rel="stylesheet" href="css/style.css">
-      <script>
-         var googleError = function(){
-            alert("Failed to load Google map, please reload.");
-         }
-      </script>
+
    </body>
 </html>

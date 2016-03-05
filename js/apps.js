@@ -31,8 +31,7 @@ var locations = [{
 }];
 
 var initApp = function() {
-  ko.applyBindings(new myLatlng());
-};
+
 
 var View = function() {
     "use strict";
@@ -266,7 +265,7 @@ var ViewModel = function() {
 };
 
 
-
 var viewModel = new ViewModel();
 viewModel.initialize();
 ko.applyBindings(viewModel);
+};

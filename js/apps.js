@@ -245,9 +245,10 @@ var ViewModel = function() {
 
     self.search = ko.observable("");
 
-   self.searchGyms = ko.computed(function(item) {
+    self.searchGyms = ko.computed(function(item) {
 
         return ko.utils.arrayFilter(self.locationList(), function(item) {
+
             if (item.name.toLowerCase().indexOf(self.search()) > -1) {
                 return self.locationList();
                 return view.markers[item.id].setVisible(true);
@@ -255,16 +256,11 @@ var ViewModel = function() {
             } else {
                 return view.markers[item.id].setVisible(false);
                 return false;
-                }
-        return self.locationList();
+            }
         });
-
     });
 
 };
-
-
-
 
 var viewModel = new ViewModel();
 viewModel.initialize();

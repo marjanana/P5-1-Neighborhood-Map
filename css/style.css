@@ -41,7 +41,7 @@
 body,
 #map-canvas {
     height: 500px;
-    width: 100%
+    width: auto;
 }
 .btn {
     border: transparent !important;

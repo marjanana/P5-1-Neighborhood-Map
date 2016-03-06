@@ -3,54 +3,43 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Boxing Gyms in NYC</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+   <title>Boxing Gyms in NYC</title>
 </head>
 
 <body>
+   <div id="wrapper">
+      <div id="sidebar-wrapper">
+         <ul data-bind="foreach: searchGyms" class="list">
+             <li data-bind="click: $parent.onLocationClick"><span data-bind="text:name" class="sidebar-brand"></span>
+             </li>
+         </ul>
+         <form class="form">
+             <input data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Search" class="search" />
+         </form>
+      </div>
+      <div class="menu"><a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&#9776;</a></div>
+   </div>
 
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
+   <div id="alert-box" class="msgbox alert alert-warning">Error</div>
+   <div id="map-canvas"></div>
 
-            <ul data-bind="foreach: searchGyms" class="list">
-                <li data-bind="click: $parent.onLocationClick"><span data-bind="text:name" class="sidebar-brand"></span>
-                </li>
-            </ul>
+   <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+   <script src="js/jquery.js"></script>
+   <script src="js/knockout-3.3.0.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <script src="js/apps.js"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmkRJgL99vrPsypcFhBzeg3l1paHlHxTg&amp;callback=initApp" async></script>
+   <script>
+      $("#menu-toggle").click(function(e) {
+         e.preventDefault();
+         $("#wrapper").toggleClass("toggled");
+      });
+   </script>
 
-            <form class="form">
-                <input data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Search" class="search" />
-            </form>
-
-        </div>
-
-
-        <div><a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a></div>
-    </div>
-
-    <div id="alert-box" class="msgbox alert alert-warning">Error</div>
-    <div id="map-canvas"> </div>
-
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/knockout-3.3.0.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="js/apps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmkRJgL99vrPsypcFhBzeg3l1paHlHxTg&amp;callback=initApp" async></script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
-
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
-
-
-
+   <link href="css/simple-sidebar.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
 </body>
-
 </html>

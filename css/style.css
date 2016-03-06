@@ -16,7 +16,6 @@
     list-style-type: none;
     text-align: center;
     background-color: rgb(153, 190, 253);
-    border: 1px solid gray;
     padding: 15px 10px;
     font-weight: bold;
     line-height: 195%;
@@ -40,12 +39,9 @@
 }
 body,
 #map-canvas {
-    height: 500px;
+    height: 700px;
     width: auto;
 }
-.btn {
-    border: transparent !important;
-    color: black !important;
-    width: 100% !important;
-    padding: 20px 6px;
+.menu {
+    background-color: rgb(153, 190, 253);
 }

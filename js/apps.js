@@ -245,21 +245,21 @@ var ViewModel = function() {
 
     self.search = ko.observable("");
 
-    self.searchGyms = ko.computed(function(item) {
-
-        return ko.utils.arrayFilter(self.locationList(), function(item) {
-
-            if (item.name.toLowerCase().indexOf(self.search()) > -1) {
-                return self.locationList();
-                return view.markers[item.id].setVisible(true);
-                return true;
-            } else {
-                return view.markers[item.id].setVisible(false);
-                return false;
-            }
-        });
-    });
-
+    self.searchGyms = ko.computed(function() {
+        var filter = self.search().toLowerCase();
+        if (!filter) {
+            ko.utils.arrayForEach(self.locationList(), function(item) {
+            view.markers[item.id].setVisible(true);
+            });
+            return self.locationList();
+        } else {
+            return ko.utils.arrayFilter(self.locationList(), function(item) {
+            var visible = (item.name.toLowerCase().indexOf(filter) === 0);
+            view.markers[item.id].setVisible(visible);
+            return visible;
+            });
+        }
+    }, self);
 };
 
 var viewModel = new ViewModel();

@@ -41,6 +41,7 @@ body,
 #map-canvas {
     height: 700px;
     width: auto;
+    background-color: rgb(153, 190, 253);
 }
 .menu {
     background-color: rgb(153, 190, 253);

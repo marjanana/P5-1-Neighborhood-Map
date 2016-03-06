@@ -229,7 +229,7 @@ var ViewModel = function() {
             if (data.response.photos.count == 1) {
                 var photoUrl =
                     data.response.photos.items[0].prefix +
-                    "width150" +
+                    "width100" +
                     data.response.photos.items[0].suffix;
                 $('#fs-photo').attr('src', photoUrl);
                 view.resetInfoWindow(location);

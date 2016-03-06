@@ -11,6 +11,7 @@
 <body>
    <div id="wrapper">
       <div id="sidebar-wrapper">
+
          <ul data-bind="foreach: searchGyms" class="list">
              <li data-bind="click: $parent.onLocationClick"><span data-bind="text:name" class="sidebar-brand"></span>
              </li>
@@ -19,7 +20,8 @@
              <input data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Search" class="search" />
          </form>
       </div>
-      <div class="menu"><a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&#9776;</a></div>
+
+      <div class="menu"><a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&#9776;</a> <span class="title">BOXING GYMS IN NYC</span></div>
    </div>
 
    <div id="alert-box" class="msgbox alert alert-warning">Error</div>
